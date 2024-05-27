@@ -1,6 +1,10 @@
 docker run -it --rm -p 8000:8000/tcp -p 61999:61999/tcp -p 54000:54000/tcp -v ~/wikis:/wikis tracd
 
+if newly copied, in container
 
-
-
+for i in `ls -d /wikis/*/conf | awk -F/ '{ print $3 }'`
+{
+   trac-admin /wikis/$i upgrade
+   trac-admin /wikis/$i wiki upgrade
+}
 
