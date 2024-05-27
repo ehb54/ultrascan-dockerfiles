@@ -11,7 +11,7 @@ ARG ultrascan_branch=master
 
 ## qt defaults
 ARG qt_major_version=5.15
-ARG qt_version=5.15.13
+ARG qt_version=5.15.14
 ARG qwt_version=6.1.6
 ### N.B. qwt_version is hard coded in the local.pri.somo so we need to change this & in the codeql container & workflow/codeql-analysis.yml
 
@@ -175,7 +175,7 @@ RUN cp $QTDIR/bin/assistant /ultrascan3/bin
 ## 
 ##
 
-ENV PATH="${ULTRASCAN}/bin:${PATH}"
+ENV PATH="${ULTRASCAN}/bin:${QTDIR}/bin:${PATH}"
 ENV LD_LIBRARY_PATH="${ULTRASCAN}/lib:${QTDIR}/lib:${QWTDIR}/lib:${LD_LIBRARY_PATH}"
 
 ## docker run -it --rm -e DISPLAY=docker.for.mac.host.internal:0 debusdev bash
